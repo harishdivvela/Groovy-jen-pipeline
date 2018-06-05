@@ -11,7 +11,7 @@ pipeline
     {
       steps
       {
-        # withMaven(maven :'Maven')
+        
         {
           bat 'mvn clean compile'
         }
@@ -22,7 +22,7 @@ pipeline
     {
       steps
       {
-        #withMaven(maven :'Maven')
+        
         {
           bat 'mvn test'
         }
@@ -33,7 +33,7 @@ pipeline
     {
       steps
       {
-        #withMaven(maven :'Maven')
+        
         {
           bat 'mvn clean install'
         }
