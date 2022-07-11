@@ -1,0 +1,5 @@
+aws ec2 create-snapshot --volume-id vol-1234567890abcdef0 --description "This is my root volume snapshot"
+
+aws cloudformation deploy --template-file ./lvm-volume.yaml --stack-name lvm-volume --parameter-overrides VpcIdParameter=vpc-abcd1234 InstanceSubnetIdParameter=subnet-abcd1234 SshKeyParameter=mysshkey
+
+

@@ -1,0 +1,30 @@
+   Type: AWS::EC2::EIPAssociation
+    Properties:
+      AllocationId: !GetAtt ControlPortAddress.AllocationId
+      NetworkInterfaceId: !Ref controlXface
+  WebPortAddress:
+    Type: AWS::EC2::EIP
+    Properties:
+      Domain: vpc
+  AssociateWebPort:
+    Type: AWS::EC2::EIPAssociation
+    Properties:
+      AllocationId: !GetAtt WebPortAddress.AllocationId
+      NetworkInterfaceId: !Ref webXface
+  SSHSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      VpcId: !Ref VpcId
+  Ec2Instance:
+    Type: AWS::EC2::ubuntu
+    Properties:
+      ImageId: !FindInMap [ RegionMap, !Ref 'AWS::Region', AMI ]
+      KeyName: !Ref KeyName
+      NetworkInterfaces:
+      - NetworkInterfaceId: !Ref controlXface
+        DeviceIndex: 0
+      - NetworkInterfaceId: !Ref webXface
+        DeviceIndex: 1
+      Tags:
+      - Key: Role
+        Value: Test Instance

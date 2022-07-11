@@ -1,0 +1,14 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Conditionally creating DB instance from a DB snapshot.
+Parameters:
+  DbSnapshot:
+    Type: String
+  UseSnapshot:
+    Type: String
+    AllowedValues: [ true, false ]
+  MasterUsername:
+    Type: String
+  MasterUserPassword:
+    Type: String
+Conditions:
+  UseSnapshotSelected: !Equals [ !Ref UseSnapshot, 'true' ]
