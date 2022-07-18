@@ -16,7 +16,7 @@ pipeline
     stage ('testing stage')
     {
       when {
-                environment(name: "BRANCH_NAME", value: "main")
+                environment(name: "BRANCH_NAME", value: "dependabot/maven/ch.qos.logback-logback-classic-1.2.0")
       } 
         
       steps
