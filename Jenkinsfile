@@ -9,7 +9,7 @@ pipeline
       { 
         withMaven(maven : 'maven_3.3.9')
       {
-          sh 'mvn clean compile'
+          sh 'ls'
         }
       }
     }
@@ -20,7 +20,7 @@ pipeline
         withMaven(maven : 'maven_3.3.9')
       } 
         {
-          sh 'mvn test'
+          sh 'ls'
         }
     }
 
@@ -31,7 +31,7 @@ pipeline
         withMaven(maven : 'maven_3.3.9')
       }        
         {
-          sh 'mvn clean install'
+          sh 'ls'
         }
       }
   }
