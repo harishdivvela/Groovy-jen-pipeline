@@ -15,6 +15,10 @@ pipeline
     }
     stage ('testing stage')
     {
+      when {
+                environment(name: "BRANCH_NAME", value: "main")
+      } 
+        
       steps
       {
         withMaven(maven : 'maven_3.3.9')
@@ -23,6 +27,7 @@ pipeline
           bat 'mvn test'
         }
     }
+      
 
     stage ('install stage')
     {
