@@ -1,39 +1,13 @@
-pipeline
-{
-  agent any
-  stages
-  {
-    stage ('compile stage')
-    {
-      steps
-      { 
-        withMaven(maven : 'maven_3.3.9')
-      {
-          sh 'ls'
-        }
-      }
-    }
-    stage ('testing stage')
-    {
-      steps
-      {
-        withMaven(maven : 'maven_3.3.9')
-      } 
-        {
-          sh 'ls'
+pipeline {
+    agent any
+    stages {
+        stage("Test") {
+            when {
+                equals(actual: currentBuild.number, expected: 1)
+            }
+            steps {
+                echo "Hello World!"
+            }
         }
     }
-
-    stage ('install stage')
-    {
-      steps
-      {
-        withMaven(maven : 'maven_3.3.9')
-      }        
-        {
-          sh 'ls'
-        }
-      }
-  }
-
 }
