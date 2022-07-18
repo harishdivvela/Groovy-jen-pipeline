@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage("Test") {
             when {
-                equals(actual: currentBuild.number, expected: 1)
+                environment(name: "BRANCH_NAME", value: "main")
             }
             steps {
                 echo "Hello World!"
